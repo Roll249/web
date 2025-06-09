@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/babel-standalone@7/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">Nguyễn Phương Hà</h1>
+            <div class="flex space-x-4">
+                <a href="#quizme" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition clickable">QuizMe</a>
+                <a href="#cryptoquest" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition clickable">CryptoQuest</a>
+                <a href="#eduverse" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition clickable">Eduverse</a>
+                <a href="#research" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition clickable">Research</a>
+                <a href="#about" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition clickable">About</a>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 clickable">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    
+
+    <!-- QuizMe Section -->
+    <section id="quizme" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 text-center fade-in">QuizMe: Personalized Learning Platform</h2>
+            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transform hover:scale-105 transition">
+                <p class="text-lg mb-4">QuizMe is a web-based application designed to enhance learning through active recall and personalized question generation using Generative AI. It empowers users to study smarter by creating tailored quizzes based on their input materials.</p>
+                <ul class="list-disc list-inside mb-4">
+                    <li><strong>Tech Stack:</strong> HTML, CSS, JavaScript, React, Tailwind CSS</li>
+                    <li><strong>Features:</strong> AI-generated quizzes, user progress tracking, responsive design</li>
+                    <li><strong>Purpose:</strong> Facilitate effective self-study with adaptive learning techniques</li>
+                </ul>
+                <video controls class="w-full rounded-lg mb-4">
+                    <source src="c:\Users\Nguyen Thi Ha\OneDrive - Hanoi University of Science and Technology\Microsoft Teams Chat Files\0516.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a href="https://education-chatbot-cua-dao-thanh-manh.streamlit.app/" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition clickable">Visit QuizMe</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CryptoQuest Section -->
+    <section id="cryptoquest" class="py-16 bg-gray-200 dark:bg-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 text-center fade-in">CryptoQuest: Educational Cryptography Game</h2>
+            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transform hover:scale-105 transition">
+                <p class="text-lg mb-4">CryptoQuest is an interactive web-based game designed to teach high school students about cryptography through Caesar and Vigenère ciphers. Built with HTML, CSS, and JavaScript, it features a spy-themed narrative, a 5-minute timer per level, high-score tracking, and sound effects to engage learners in STEM education.</p>
+                <ul class="list-disc list-inside mb-4">
+                    <li><strong>Tech Stack:</strong> HTML, CSS, JavaScript</li>
+                    <li><strong>Features:</strong> Two cipher levels, hints system, timer, high-score system, responsive design</li>
+                    <li><strong>Purpose:</strong> Promote STEM learning through gamified cryptography challenges</li>
+                </ul>
+                <div class="flex space-x-4">
+                    <a href="file:///C:/Users/Nguyen%20Thi%20Ha/Downloads/STEM%20Project%20Ideas.pdf" class="inline-block bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition clickable">Read Proposal</a>
+                    <a href="file:///C:/Users/Nguyen%20Thi%20Ha/Downloads/CrytoQuest.html" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition clickable">Visit CryptoQuest</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eduverse Section -->
+    <section id="eduverse" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 text-center fade-in">Eduverse: Immersive Learning Experience</h2>
+            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transform hover:scale-105 transition">
+                <p class="text-lg mb-4">Eduverse is an innovative platform that provides an immersive learning experience, accessible on various devices including VR, computers, and mobile phones. It fosters interactive and collaborative learning environments for students and educators.</p>
+                <ul class="list-disc list-inside mb-4">
+                    <li><strong>Tech Stack:</strong> Web technologies, VR integration</li>
+                    <li><strong>Features:</strong> Multi-device support, scene navigation, voice communication</li>
+                    <li><strong>Purpose:</strong> Enhance education through immersive and interactive experiences</li>
+                </ul>
+                <div class="flex space-x-4">
+                    <a href="https://web.facebook.com/profile.php?id=61573082973383" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition clickable">Visit Eduverse Fanpage</a>
+                    <a href="https://1drv.ms/b/c/98e5fc5b03d4c326/ERNjsG8XQrBAq8tuddCaOvgBauGesR6Dh9OuOfTWIoMbMA?e=nSq2wx" class="inline-block bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition clickable">Read Proposal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="py-16 bg-gray-200 dark:bg-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 text-center fade-in">Research Contributions</h2>
+            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transform hover:scale-105 transition">
+                <h3 class="text-xl font-semibold mb-2">Active Recall via GenAI-Generated Questioning: A Personalized Self-Study Approach with QuizMe</h3>
+                <p class="text-lg mb-4">This study presents QuizMe, a platform leveraging Generative AI to generate active recall questions from students’ materials. An experiment with 67 HUST students showed significant score improvements (from 6.985 to 8.791, p < 0.001) and 85% rated usability as “good” or “excellent.” Students praised its convenience but noted mobile interface limitations. Authors: Nguyen Phuong Ha, Nguyen Khanh Thien, Nguyen Duc Hai Dang, Dao Thanh Manh, Pham Duy Bao.</p>
+                <ul class="list-disc list-inside mb-4">
+                    <li><strong>Published:</strong> Hanoi University of Science and Technology, 2025</li>
+                    <li><strong>Key Findings:</strong> AI-driven active recall improves retention by 25.8% compared to traditional methods</li>
+                    <li><strong>Methodology:</strong> Controlled experiment with 67 students, paired t-tests, thematic analysis</li>
+                </ul>
+                <a href="https://sg.docworkspace.com/d/sIJPjxfSVAsa0tcEG" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition clickable">Read the Paper</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 text-center fade-in">About Me</h2>
+            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transform hover:scale-105 transition">
+                <p class="text-lg mb-4">I am a passionate developer and researcher focused on leveraging AI to enhance educational tools. My work on QuizMe and Eduverse aims to make learning more effective and accessible for everyone.</p>
+                <p><strong>Contact:</strong> <a href="mailto:phuongha@example.com" class="text-indigo-600 dark:text-indigo-400 hover:underline clickable">Ha.NP2411931@sis.hust.edu.vn</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>© 2025 Nguyễn Phương Hà. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="text/babel">
+        function ThemeToggle() {
+            const [isDark, setIsDark] = React.useState(localStorage.getItem('theme') === 'dark');
+
+            React.useEffect(() => {
+                if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                }
+            }, [isDark]);
+
+            return (
+                <button
+                    onClick={() => { setIsDark(!isDark); playClickSound(); }}
+                    className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+                >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d={isDark ? "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" : "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"}
+                        />
+                    </svg>
+                </button>
+            );
+        }
+
+        ReactDOM.render(<ThemeToggle />, document.getElementById('theme-toggle'));
+
+        // Fade-in animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Click sound function
+        function playClickSound() {
+            const audio = new Audio('https://www.soundjay.com/buttons/beep-01a.mp3');
+            audio.play().catch(error => console.log("Audio playback failed:", error));
+        }
+
+        // Add click sound to clickable elements
+        document.querySelectorAll('.clickable').forEach(element => {
+            element.addEventListener('click', playClickSound);
+        });
+    </script>
+</body>
+</html>
