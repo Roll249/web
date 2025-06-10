@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoQuest: Save the Network</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .game-container {
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #ffd700;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        p.story {
+            text-align: center;
+            color: #333;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        .score-board {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #2196f3;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .score-board span {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .level {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .level:hover {
+            transform: scale(1.02);
+        }
+        h2 {
+            color: #1e3c72;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        input {
+            padding: 12px;
+            margin: 10px;
+            border: 2px solid #2196f3;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 200px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            border-color: #ffd700;
+            outline: none;
+        }
+        button {
+            padding: 12px 20px;
+            margin: 10px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        button.hint-btn {
+            background: #ff9800;
+        }
+        button.hint-btn:hover {
+            background: #f57c00;
+        }
+        .result {
+            margin: 10px;
+            font-weight: bold;
+            animation: resultFade 0.5s ease-in;
+        }
+        @keyframes resultFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            text-align: left;
+            color: #333;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #333;
+        }
+        .lock-icon {
+            display: block;
+            margin: 0 auto 20px;
+            width: 50px;
+        }
+        @media (max-width: 600px) {
+            .game-container {
+                padding: 15px;
+            }
+            input, button {
+                width: 100%;
+                margin: 5px 0;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <img src="https://img.icons8.com/ios-filled/50/ffd700/lock.png" alt="Lock Icon" class="lock-icon">
+        <h1>CryptoQuest: Save the Network</h1>
+        <p class="story">You are a secret agent tasked with decoding encrypted messages to stop a global cyber conspiracy. Crack the codes and save the network!</p>
+        <div class="score-board">
+            <span>Score: <span id="score">0</span></span>
+            <span>Level: <span id="current-level">1</span>/2</span>
+        </div>
+        <div class="level" id="level1">
+            <h2>Level 1: Caesar Cipher</h2>
+            <p>Encrypted message: <strong id="caesar-message">Khoor, Zruog!</strong></p>
+            <p>Enter shift key (1-25):</p>
+            <input type="number" id="caesar-shift" min="1" max="25" placeholder="Shift key">
+            <input type="text" id="caesar-answer" placeholder="Your answer">
+            <button onclick="checkCaesar()">Submit</button>
+            <button class="hint-btn" onclick="showHint(1)">Show Hint</button>
+            <p class="result" id="caesar-result"></p>
+        </div>
+        <div class="level" id="level2" style="display: none;">
+            <h2>Level 2: Vigenère Cipher</h2>
+            <p>Encrypted message: <strong id="vigenere-message">Lwcxs, Nvzi!</strong></p>
+            <p>Enter keyword:</p>
+            <input type="text" id="vigenere-keyword" placeholder="Keyword">
+            <input type="text" id="vigenere-answer" placeholder="Your answer">
+            <button onclick="checkVigenere()">Submit</button>
+            <button class="hint-btn" onclick="showHint(2)">Show Hint</button>
+            <p class="result" id="vigenere-result"></p>
+        </div>
+    </div>
+    <div class="modal" id="hint-modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeHint()">&times;</span>
+            <p id="hint-text"></p>
+        </div>
+    </div>
+    <script>
+        let score = 0;
+        let currentLevel = 1;
+        const correctAnswers = {
+            caesar: "Hello, World!",
+            vigenere: "Vigenere Code"
+        };
+
+        // Caesar Cipher logic
+        function caesarDecrypt(text, shift) {
+            let result = "";
+            for (let char of text) {
+                if (char.match(/[a-z]/i)) {
+                    let code = char.charCodeAt(0);
+                    let base = code >= 65 && code <= 90 ? 65 : 97;
+                    result += String.fromCharCode((code - base - shift + 26) % 26 + base);
+                } else {
+                    result += char;
+                }
+            }
+            return result;
+        }
+
+        // Vigenère Cipher logic
+        function vigenereDecrypt(text, keyword) {
+            let result = "";
+            let keywordIndex = 0;
+            for (let i = 0; i < text.length; i++) {
+                let char = text[i];
+                if (char.match(/[a-z]/i)) {
+                    let shift = keyword.charCodeAt(keywordIndex % keyword.length) - (keyword[keywordIndex % keyword.length].match(/[A-Z]/) ? 65 : 97);
+                    let code = char.charCodeAt(0);
+                    let base = code >= 65 && code <= 90 ? 65 : 97;
+                    result += String.fromCharCode((code - base - shift + 26) % 26 + base);
+                    keywordIndex++;
+                } else {
+                    result += char;
+                }
+            }
+            return result;
+        }
+
+        // Check Caesar Cipher answer
+        function checkCaesar() {
+            const shift = parseInt(document.getElementById("caesar-shift").value);
+            const answer = document.getElementById("caesar-answer").value;
+            const encrypted = document.getElementById("caesar-message").innerText;
+            const decrypted = caesarDecrypt(encrypted, shift);
+            const resultElement = document.getElementById("caesar-result");
+            if (answer.toLowerCase() === correctAnswers.caesar.toLowerCase()) {
+                score += 100;
+                document.getElementById("score").innerText = score;
+                document.getElementById("current-level").innerText = 2;
+                resultElement.innerText = "Correct! Moving to Level 2...";
+                resultElement.style.color = "green";
+                setTimeout(() => {
+                    document.getElementById("level1").style.display = "none";
+                    document.getElementById("level2").style.display = "block";
+                    document.getElementById("level2").style.animation = "fadeIn 1s ease-in";
+                }, 1000);
+            } else {
+                resultElement.innerText = `Incorrect. Try again! (Correct answer: ${decrypted})`;
+                resultElement.style.color = "red";
+            }
+        }
+
+        // Check Vigenère Cipher answer
+        function checkVigenere() {
+            const keyword = document.getElementById("vigenere-keyword").value;
+            const answer = document.getElementById("vigenere-answer").value;
+            const encrypted = document.getElementById("vigenere-message").innerText;
+            const decrypted = vigenereDecrypt(encrypted, keyword);
+            const resultElement = document.getElementById("vigenere-result");
+            if (answer.toLowerCase() === correctAnswers.vigenere.toLowerCase()) {
+                score += 150;
+                document.getElementById("score").innerText = score;
+                resultElement.innerText = "Congratulations! You saved the network!";
+                resultElement.style.color = "green";
+            } else {
+                resultElement.innerText = `Incorrect. Try again! (Correct answer: ${decrypted})`;
+                resultElement.style.color = "red";
+            }
+        }
+
+        // Show hint in modal
+        function showHint(level) {
+            const modal = document.getElementById("hint-modal");
+            const hintText = document.getElementById("hint-text");
+            if (level === 1) {
+                hintText.innerText = "The Caesar Cipher shifts each letter by a fixed number. For example, with a shift of 3, 'D' becomes 'A'. Try different shift values (1-25). For this puzzle, the shift is 3.";
+            } else if (level === 2) {
+                hintText.innerText = "The Vigenère Cipher uses a keyword to shift letters. Each letter in the keyword determines a shift (A=0, B=1, etc.). Try the keyword 'KEY'.";
+            }
+            modal.style.display = "flex";
+        }
+
+        // Close hint modal
+        function closeHint() {
+            document.getElementById("hint-modal").style.display = "none";
+        }
+    </script>
+</body>
+</html>
